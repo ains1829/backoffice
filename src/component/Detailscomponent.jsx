@@ -1,8 +1,7 @@
 import Photo from "./Photo"
 import '../assets/scss/details.css'
 import { Link } from "react-router-dom"
-import Vendeur from "./Vendeur"
-function Details_component({id}){
+function Detailscomponent({id}){
     return (
         <div className="details">
             <div className="about-car">
@@ -54,4 +53,4 @@ function Details_component({id}){
         </div>
     )
 }
-export default Details_component 
+export default Detailscomponent 

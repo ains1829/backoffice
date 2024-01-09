@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import Details_component from "../component/Details_component"
+import Detailscomponent from "../component/Detailscomponent"
 import Menu from "../component/Menu"
 import '../assets/scss/details.css'
 import Header from "../component/Header"
@@ -13,7 +13,7 @@ function Details(){
                 <Menu />
             </div>
             <div className="content-details">
-                <Details_component id={id} />
+                <Detailscomponent id={id} />
                 <Vendeur id={id} />
             </div>
         </div>
