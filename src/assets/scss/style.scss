@@ -11,8 +11,8 @@
     src: url("../fontawesome-5/fonts/Poppins-Light.ttf");
 }
 :root{
-    --theme : rgb(19, 22, 224) ;
-    --red : rgba(255, 35, 31, 0.881) ;
+    --theme : rgba(0, 224, 112, 0.881) ;
+    --red : rgba(0, 224, 112, 0.881) ;
     --white : white ;
     --gray : rgba(240, 239, 239, 0.048) ;
     --green : rgba(22, 34, 255, 0.415) ;
@@ -27,17 +27,29 @@ header{
         font-weight: bolder;
         color: var(--red);
     }
-    .other-nav{
-        width: 150px;
-        background: var(--red);
-        font-family: poppins_medium;
-        text-align: center;
-        color: var(--white);
-        padding: 8px;
-        font-size: 13px;
-        box-shadow: 0px 0px 8px 4px rgba(120, 120, 120, 0.061);
-        transform: translateX(-30px);
-        border-radius: 30px;
+    .nav-rigth{
+        display: flex;
+        align-items: center;
+        .openbtn {
+            font-size: 18px;
+            cursor: pointer;
+            background-color: var(--red);
+            color: var(--white);
+            border: none;
+            border-radius: 100px;
+            transform: translateX(-15px);
+        }
+        .other-nav{
+            width: 150px;
+            background: var(--red);
+            font-family: poppins_medium;
+            text-align: center;
+            color: var(--white);
+            padding: 8px;
+            font-size: 13px;
+            box-shadow: 0px 0px 8px 4px rgba(120, 120, 120, 0.061);
+            border-radius: 30px;
+        }
     }
     margin-bottom: 10px;
 }
@@ -104,6 +116,7 @@ header{
         .other-nav{
             padding: 1px;
             font-size: 12px;
+            display: none;
         }
     }
     .bloc-annonce{
@@ -131,3 +144,4 @@ header{
 }
 @import url("./menu.css");
 @import url("./details.css");
+@import url("./Dashboard.css");
