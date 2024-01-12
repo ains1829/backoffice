@@ -10,14 +10,14 @@ const Photo = () => {
         <img
           className="d-block w-100"
           src={image_test}
-          alt="Première image"
+          alt=""
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src={image_other}
-          alt="Deuxième image"
+          alt=""
         />
       </Carousel.Item>
     </Carousel>
