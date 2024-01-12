@@ -1,28 +1,27 @@
-import '../assets/scss/Form_tab.css';
-import Marque from "./formulaire/Marque";
-function Tab_marque(){
+import Categorie from "./formulaire/Categorie";
+function Tabcategorie(){
     return(
         <div className="content-form-tab">
-            <Marque />
+            <Categorie />
             <div className="tab">
                 <table>
                     <tr>
-                        <th>Marque</th>
+                        <th>Categorie</th>
                         <th></th>
                         <th></th>
                     </tr>
                     <tr className="tr">
-                        <td>Mercedes</td>
+                        <td>Famille</td>
                         <td>modifier</td>
                         <td>delete</td>
                     </tr>
                     <tr className="tr">
-                        <td>Ferrari</td>
+                        <td>Sport</td>
                         <td>modifier</td>
                         <td>delete</td>
                     </tr>
                     <tr className="tr">
-                        <td>Tesla</td>
+                        <td>Course</td>
                         <td>modifier</td>
                         <td>delete</td>
                     </tr>
@@ -31,4 +30,4 @@ function Tab_marque(){
         </div>
     )
 }
-export default Tab_marque
+export default Tabcategorie

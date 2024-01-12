@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Modelelist from "./formulaire/ModeleList"
 
-function Tab_modele(){
+function Tabmodele(){
     const [select_marque , setSelectMarque] = useState("0") 
     const handleselect = (event) =>{
         setSelectMarque(event.target.value)
@@ -21,4 +21,4 @@ function Tab_modele(){
         </div>
     )
 }
-export default Tab_modele
+export default Tabmodele

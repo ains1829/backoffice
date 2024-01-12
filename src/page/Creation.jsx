@@ -1,12 +1,12 @@
 import Header from "../component/Header"
 import Menu from "../component/Menu"
-import Tab_categorie from "../component/Tab_categorie"
+import Tabcategorie from "../component/Tabcategorie"
 import '../assets/scss/Form_tab.css';
 import '../assets/scss/modele.css'
 import { useState } from "react";
-import Tab_marque from "../component/Tab_marque";
+import Tabmarque from "../component/Tabmarque";
 import Modele from "../component/Modele";
-import Tab_modele from "../component/Tab_modele";
+import Tabmodele from "../component/Tabmodele";
 function Creation(){
     const [component , setComponenet] = useState("0")
     const handleselect =  (event) =>{
@@ -28,17 +28,17 @@ function Creation(){
                 </div>
                 {
                     component === "0" ? 
-                    <Tab_categorie /> : null
+                    <Tabcategorie /> : null
                 }
                 {
                     component === "1" ? 
-                    <Tab_marque /> : null
+                    <Tabmarque /> : null
                 }
                 {
                     component === "2" ? 
                     <div className="modele">
                         <Modele />
-                        <Tab_modele />
+                        <Tabmodele />
                     </div> : null
                 }
             </div>
