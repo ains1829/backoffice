@@ -12,8 +12,8 @@ function Menu(){
                 <Link className="closebtn" onClick={closeNav}>×</Link>
                 <Link to="/firstpage">Annonce</Link>
                 <Link to="/stat">Statistique</Link>
-                <Link href="#">Service</Link>
-                <Link href="#">Log Out</Link>
+                <Link to="/creation">Creation</Link>
+                <Link to="/logout">Log Out</Link>
             </div>
         </div>
     )

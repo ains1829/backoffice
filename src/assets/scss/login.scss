@@ -1,0 +1,39 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    form{
+        span{
+            font-size: 15px;
+            font-family: poppins_medium;
+            text-align: center;
+            padding: 5px;
+        }
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        div{
+            font-family: poppins_medium;
+            display: flex;
+            flex-direction: column;
+            label{
+                font-size: 13px;
+            }
+            input[type="email"] , input[type="password"]{
+                padding: 8px;
+                background: rgba(235, 235, 235, 0.51);
+                outline: none;
+                border: none;
+            }
+            input[type="submit"]{
+                padding: 10px;
+                background: var(--theme);
+                margin-top: 5px;
+                color: white;
+                outline: none;
+                border: none;
+            }
+        }
+    }
+}

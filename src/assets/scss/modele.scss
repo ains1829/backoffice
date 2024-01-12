@@ -1,0 +1,203 @@
+.generate-modele{
+    box-shadow: 1px 0px 5px 4px rgba(106, 106, 106, 0.123);
+    padding: 10px;
+    div{
+        display: flex;
+        flex-direction: column;
+        font-family: poppins_medium;
+        input[type="text"] , input[type="date"] , select{
+            background: rgba(196, 196, 196, 0.52);
+            padding: 10px;
+            border: none;
+            outline: none;
+            width: 350px;
+            font-family: poppins_ligth;
+        }
+        input[type="submit"]{
+            width: 150px;
+            background: var(--theme);
+            padding: 8px;
+            font-family: poppins_ligth;
+            color: var(--white);
+            border: none;
+            transform: translateY(5px);
+        }
+        label{
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .input-checkbox{
+            display: flex;
+            width: 100%;
+            flex-direction: row !important;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            display: flex;
+            align-items: center;
+            label{
+            color: gray;
+            font-size: 13px;
+            font-family: poppins_medium;
+            }
+            .content-child{
+                display: flex;
+                flex-direction: row !important;
+            }
+            .checkbox {
+                display: table-cell;
+                width: 100%;
+                height: 100%;
+                vertical-align: middle;
+                text-align: center;
+            }
+            label span {
+                display: inline-block;
+                position: relative;
+                background-color: transparent;
+                width: 25px;
+                height: 25px;
+                margin-left: 5px;
+                transform-origin: center;
+                border: 2px solid var(--theme);
+                border-radius: 50%;
+                vertical-align: middle;
+                margin-right: 10px;
+                transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+            }
+            label span:before {
+                content: "";
+                width: 0px;
+                height: 2px;
+                border-radius: 2px;
+                background: var(--theme);
+                position: absolute;
+                transform: rotate(45deg);
+                top: 10px;
+                left: 7px;
+                transition: width 50ms ease 50ms;
+                transform-origin: 0% 0%;
+            }
+            label span:after {
+                content: "";
+                width: 0;
+                height: 2px;
+                border-radius: 2px;
+                background: var(--theme);
+                position: absolute;
+                transform: rotate(305deg);
+                top: 14px;
+                left: 8px;
+                transition: width 50ms ease;
+                transform-origin: 0% 0%;
+            }
+            label:hover span:before {
+                width: 5px;
+                transition: width 100ms ease;
+            }
+            label:hover span:after {
+                width: 10px;
+                transition: width 150ms ease 100ms;
+            }
+        
+            input[type=checkbox] {
+                display: none;
+            }
+            input[type=checkbox]:checked + label span {
+                background-color: var(--theme);
+                transform: scale(1.25);
+            }
+            input[type=checkbox]:checked + label span:after {
+                width: 10px;
+                background: #fff;
+                transition: width 150ms ease 100ms;
+            }
+            input[type=checkbox]:checked + label span:before {
+                width: 5px;
+                background: #fff;
+                transition: width 150ms ease 100ms;
+            }
+            input[type=checkbox]:checked + label:hover span {
+                background-color:  var(--theme);
+                transform: scale(1.25);
+            }
+            input[type=checkbox]:checked + label:hover span:after {
+                width: 10px;
+                background: #fff;
+                transition: width 150ms ease 100ms;
+            }
+            input[type=checkbox]:checked + label:hover span:before {
+                width: 5px;
+                background: #fff;
+                transition: width 150ms ease 100ms;
+            }
+        }
+    }
+}
+.modele{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-family: poppins_ligth;
+    .modele-dispo{
+        width: 30%;
+        .choix-marque{
+            display: flex;
+            flex-direction: column;
+            label{
+                font-family: poppins_medium;
+                font-size: 13px;
+            }
+            select{
+                width: 150px;
+                padding: 8px;
+                background: none;
+                border: none;
+                font-size: 13px;
+                outline: none;
+                background: rgba(204, 204, 204, 0.347);
+            }
+        }
+        .modele-list{
+            padding: 8px;
+            margin-top: 10px;
+            box-shadow: 1px 0px 5px 4px rgba(106, 106, 106, 0.123);
+            .List-modele{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                span{
+                    background: rgba(204, 204, 204, 0.347);
+                    color: black;
+                    font-family: poppins_medium;
+                    width: 200px;
+                    padding: 10px;
+                    font-size: 15px;
+                    margin-left: 5px;
+                    border-radius: 5px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .modele{
+        display: flex;
+        flex-direction: column;
+        .generate-modele{
+            width: 90%;
+            margin: 0 auto;
+            input[type="text"] , input[type="date"],select{
+                width: 100%;
+            }
+        }
+        .modele-dispo{
+            width: 70%;
+            padding: 5px;
+            margin: 0 auto;
+            margin-bottom: 5px;
+        }
+    }
+}

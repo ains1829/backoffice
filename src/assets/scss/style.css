@@ -1,6 +1,9 @@
+@import url("./login.css");
 @import url("./menu.css");
 @import url("./details.css");
 @import url("./Dashboard.css");
+@import url("./Form_tab.css");
+@import url("./modele.css");
 @font-face {
   font-family: poppins_medium;
   src: url("../fontawesome-5/fonts/Poppins-Medium.ttf");
