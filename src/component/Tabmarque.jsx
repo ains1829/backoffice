@@ -1,4 +1,5 @@
 import '../assets/scss/Form_tab.css';
+import '../assets/fontawesome-5/css/all.min.css'
 import Marque from "./formulaire/Marque";
 function Tabmarque(){
     return(
@@ -13,18 +14,18 @@ function Tabmarque(){
                     </tr>
                     <tr className="tr">
                         <td>Mercedes</td>
-                        <td>modifier</td>
-                        <td>delete</td>
+                        <td><i className="fas fa-pen"></i></td>
+                       <td><i className="fas fa-trash-alt "></i></td>
                     </tr>
                     <tr className="tr">
                         <td>Ferrari</td>
-                        <td>modifier</td>
-                        <td>delete</td>
+                        <td><i className="fas fa-pen"></i></td>
+                       <td><i className="fas fa-trash-alt "></i></td>
                     </tr>
                     <tr className="tr">
                         <td>Tesla</td>
-                        <td>modifier</td>
-                        <td>delete</td>
+                        <td><i className="fas fa-pen"></i></td>
+                       <td><i className="fas fa-trash-alt "></i></td>
                     </tr>
                 </table>
             </div>

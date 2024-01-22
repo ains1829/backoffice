@@ -1,15 +1,15 @@
 import '../assets/scss/style.css'
+import logo from '../assets/image/1-removebg-preview.png'
 function Header(){
     
     function openNav() {
         document.getElementById("mySidebar").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
-        // document.querySelector(".openbtn").style.display = "none";
     }
     return(
         <header>
             <div className="title">
-                <span>VoitirOccazy</span>
+                <span><img src={logo} alt="..." /></span>
             </div>
             <div className='nav-rigth'>
                 <div>
@@ -20,7 +20,6 @@ function Header(){
                     </span>
                 </div>
                 <div className="other-nav">
-                    
                     <span>Administrateur</span>
                 </div>
             </div>

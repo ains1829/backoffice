@@ -69,4 +69,38 @@
             width: 100%;
         }
     }
+    .form-none{
+        display: none;
+    }
+    .modify-style{
+        width: 250px;
+        padding: 10px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: poppins_ligth;
+        background: white;
+        box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.3) ;
+        input{
+            padding: 5px;
+            width: 100%;
+            margin-top: 5px;
+            outline: none;
+        }
+        input[type="submit"]{
+            background: var(--theme);
+            border: none;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 8px;
+        }
+        input[type="text"]{
+            border: none;
+            background: none;
+            border-bottom: 1px solid var(--theme);
+        }
+
+    }
 }

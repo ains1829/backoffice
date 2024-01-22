@@ -11,8 +11,8 @@
     src: url("../fontawesome-5/fonts/Poppins-Light.ttf");
 }
 :root{
-    --theme : rgba(0, 224, 112, 0.881) ;
-    --red : rgba(0, 224, 112, 0.881) ;
+    --theme : #1A1B41 ;
+    --red : #1A1B41 ;
     --white : white ;
     --gray : rgba(240, 239, 239, 0.048) ;
     --green : rgba(22, 34, 255, 0.415) ;
@@ -22,10 +22,10 @@ header{
     justify-content: space-between;
     align-items: center;
     .title{
-        font-family: poppins_ligth;
-        font-size: 30px;
-        font-weight: bolder;
-        color: var(--red);
+        img{
+            width: 120px;
+            height: 50px;
+        }
     }
     .nav-rigth{
         display: flex;
