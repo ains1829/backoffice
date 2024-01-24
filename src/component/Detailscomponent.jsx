@@ -1,7 +1,8 @@
 import Photo from "./Photo"
 import '../assets/scss/details.css'
 import { Link } from "react-router-dom"
-function Detailscomponent({id}){
+function Detailscomponent({ id }) {
+    console.log(id)
     return (
         <div className="details">
             <div className="about-car">
