@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import logo from '../assets/image/1-removebg-preview.png'
 import '../assets/scss/login.css'
 function Login() {
     const navigate = useNavigate();
@@ -9,7 +10,8 @@ function Login() {
     return (
         <div className="login">
             <form onSubmit={handle}>
-                <span>Admin</span>
+                <img src={logo} alt="" />
+                <figcaption>Surement vous etes l'administateur</figcaption>
                 <div>
                     <label htmlFor="">Email : </label>
                     <input type="email" name="" id="" />

@@ -5,15 +5,22 @@
   height: 100vh;
 }
 .login form {
-  width: 20%;
+  width: 300px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  box-shadow: 0px 0px 4px 3px rgba(82, 79, 79, 0.079);
 }
-.login form span {
-  font-size: 15px;
-  font-family: poppins_medium;
-  text-align: center;
-  padding: 5px;
+.login form img {
+  width: 150px;
+  margin: 0 auto;
+}
+.login form figcaption {
+  font-family: poppins_ligth;
+  font-size: 13px;
+  width: 80%;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 .login form div {
   font-family: poppins_medium;
@@ -24,16 +31,19 @@
   font-size: 13px;
 }
 .login form div input[type=email], .login form div input[type=password] {
-  padding: 8px;
-  background: rgba(235, 235, 235, 0.51);
+  padding: 6px;
+  border: 1px solid var(--theme);
   outline: none;
-  border: none;
+  border-radius: 30px;
 }
 .login form div input[type=submit] {
+  border-radius: 30px;
   padding: 10px;
   background: var(--theme);
-  margin-top: 5px;
+  margin-top: 10px;
+  font-size: 14px;
   color: white;
   outline: none;
   border: none;
+  margin-bottom: 5px;
 }/*# sourceMappingURL=login.css.map */

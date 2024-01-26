@@ -37,11 +37,21 @@ function Detailscomponent({ id }) {
                     <span className="label">Annee : 2021</span>
                 </div>
                 <div>
-                    <span className="simple-label">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel minus corporis my name Is Ains </span>
+                    <span className="Desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel minus corporis my name Is Ains </span>
                 </div>
             </div>
             <div className="photo-car">
                 <Photo />
+                <div className="details-annonceur">
+                    <div className="description">
+                        <label htmlFor="">A propos du vendeur</label>
+                        <div>
+                            <span>Email : JohnDoe@gmail.com</span>
+                            <span> Localisation : Antananarivo </span>
+                            <span>Telephone : +213 454 450</span>
+                        </div>
+                    </div>
+                </div>
                 <div className="accpter-no">
                     <Link className="refuser">
                         <span>Refuser</span>

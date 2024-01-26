@@ -1,6 +1,7 @@
 .select-dash {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 .select-dash select {
@@ -53,6 +54,7 @@
 .dash .dash-unite {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   font-family: poppins_regular;
   margin-bottom: 10px;
 }
@@ -60,6 +62,7 @@
   padding: 20px;
   width: 300px;
   height: 140px;
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,4 +82,24 @@
 .dash .dash-unite .argent {
   color: white;
   background: var(--theme);
+}
+
+.taille {
+  width: 100% !important;
+  height: 500px !important;
+}
+
+@media screen and (max-width: 765px) {
+  .dash .dash-unite div {
+    width: 200px;
+    height: 100px;
+  }
+  .dash .dash-unite div .number {
+    font-size: 20px;
+  }
+  .taille {
+    margin: 0 auto !important;
+    width: 350px !important;
+    height: 300px !important;
+  }
 }/*# sourceMappingURL=Dashboard.css.map */
