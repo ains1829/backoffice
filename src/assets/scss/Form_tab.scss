@@ -104,3 +104,32 @@
 
     }
 }
+.commission{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    font-family: poppins_regular;
+    margin-left: 10px;
+    div{
+        display: flex;
+        flex-direction: column;
+        label{
+            font-size: 13px;
+        }
+        input{
+            padding: 8px;
+            outline: none;
+            border: none;
+        }
+        input[type="text"]{
+            border-bottom: 1px solid var(--theme);
+        }   
+        input[type="submit"]{
+            margin-top: 5px;
+            color: white;
+            background: var(--theme);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    }
+}

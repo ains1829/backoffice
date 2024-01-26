@@ -1,20 +1,82 @@
 .select-dash {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 .select-dash select {
   background: none;
   border: none;
+  height: 50px;
   font-family: poppins_regular;
   padding: 8px;
-  background: gray;
+  background: var(--theme);
   color: white;
-  border-radius: 30px;
   font-size: 13px;
   outline: none;
+}
+.select-dash .date {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+}
+.select-dash .date input[type=text] {
+  padding: 0 !important;
+  height: 40px;
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: 0.1px solid var(--theme);
+  font-family: poppins_regular;
+}
+.select-dash .date .red {
+  color: rgb(255, 255, 255) !important;
+  background: rgba(255, 0, 0, 0.515) !important;
+  box-shadow: 0px 0px 5px 0px rgba(195, 13, 13, 0.509);
+  border: none !important;
+}
+.select-dash .date input[type=submit] {
+  margin-top: 2px;
+  background: var(--theme);
+  font-family: poppins_regular;
+  border: none;
+  color: white;
+  padding: 8px;
+  outline: none;
+  border-radius: 5px;
 }
 
 .dash {
   width: 80%;
   margin: 0 auto;
   margin-top: 50px;
+}
+.dash .dash-unite {
+  display: flex;
+  justify-content: space-between;
+  font-family: poppins_regular;
+  margin-bottom: 10px;
+}
+.dash .dash-unite div {
+  padding: 20px;
+  width: 300px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+.dash .dash-unite div .number {
+  font-size: 40px;
+}
+.dash .dash-unite .client {
+  color: white;
+  background: var(--theme);
+}
+.dash .dash-unite .voiture {
+  color: white;
+  background: var(--theme);
+}
+.dash .dash-unite .argent {
+  color: white;
+  background: var(--theme);
 }/*# sourceMappingURL=Dashboard.css.map */

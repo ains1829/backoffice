@@ -31,8 +31,8 @@ header {
   margin-bottom: 10px;
 }
 header .title img {
-  width: 120px;
-  height: 50px;
+  width: 150px;
+  height: 80px;
 }
 header .nav-rigth {
   display: flex;
@@ -71,7 +71,7 @@ header .nav-rigth .other-nav {
 }
 .bloc-annonce .content-img {
   width: 23%;
-  height: 145px;
+  height: 180px;
 }
 .bloc-annonce .content-img img {
   width: 100%;
@@ -83,6 +83,9 @@ header .nav-rigth .other-nav {
   font-size: 15px;
   display: flex;
   flex-direction: column;
+}
+.bloc-annonce .some-details span {
+  margin-top: 5px;
 }
 .bloc-annonce .some-details .annonce {
   font-size: 13px;
@@ -131,7 +134,7 @@ header .nav-rigth .other-nav {
     margin-bottom: 8px;
   }
   .bloc-annonce .content-img {
-    width: 60%;
+    width: 70%;
   }
   .bloc-annonce .some-details {
     font-size: 13px;
@@ -142,6 +145,6 @@ header .nav-rigth .other-nav {
   }
   .bloc-annonce .some-details .content-choix a span {
     padding: 0;
-    width: 100px;
+    margin-top: 5px;
   }
 }/*# sourceMappingURL=style.css.map */

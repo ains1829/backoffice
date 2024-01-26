@@ -1,10 +1,10 @@
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../assets/scss/login.css'
-function Login(){
-    const navigate = useNavigate() ;
-    const  handle = async (event) => {
+function Login() {
+    const navigate = useNavigate();
+    const handle = async (event) => {
         event.preventDefault()
-        navigate('/firstpage')
+        navigate('/stat')
     }
     return (
         <div className="login">

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../assets/scss/style.css'
 import image_test from '../assets/image/occasion.jpg'
-function Tab() {
+function Tab(data) {
     return (
         <div className="bloc-annonce">
             <div className="content-img">

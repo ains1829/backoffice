@@ -1,6 +1,7 @@
 .generate-modele{
     box-shadow: 1px 0px 5px 4px rgba(106, 106, 106, 0.123);
     padding: 10px;
+    width: 380px;
     div{
         display: flex;
         flex-direction: column;
@@ -136,8 +137,8 @@
 }
 .modele{
     display: flex;
-    justify-content: space-evenly;
     margin-top: 20px;
+    margin-left: 20px;
     font-family: poppins_ligth;
     .modele-dispo{
         width: 30%;

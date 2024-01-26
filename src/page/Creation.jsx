@@ -6,10 +6,9 @@ import '../assets/scss/modele.css'
 import { useState } from "react";
 import Tabmarque from "../component/Tabmarque";
 import Modele from "../component/Modele";
-import Tabmodele from "../component/Tabmodele";
-function Creation(){
-    const [component , setComponenet] = useState("0")
-    const handleselect =  (event) =>{
+function Creation() {
+    const [component, setComponenet] = useState("0")
+    const handleselect = (event) => {
         setComponenet(event.target.value)
     }
     return (
@@ -27,19 +26,18 @@ function Creation(){
                     </select>
                 </div>
                 {
-                    component === "0" ? 
-                    <Tabcategorie /> : null
+                    component === "0" ?
+                        <Tabcategorie /> : null
                 }
                 {
-                    component === "1" ? 
-                    <Tabmarque /> : null
+                    component === "1" ?
+                        <Tabmarque /> : null
                 }
                 {
-                    component === "2" ? 
-                    <div className="modele">
-                        <Modele />
-                        <Tabmodele />
-                    </div> : null
+                    component === "2" ?
+                        <div className="modele">
+                            <Modele />
+                        </div> : null
                 }
             </div>
         </div>
