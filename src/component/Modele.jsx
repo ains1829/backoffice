@@ -4,15 +4,23 @@ import { useEffect, useState } from "react";
 function Modele() {
     const [Transmission, setTransmission] = useState([])
     useEffect(() => {
-        setTransmission([{ idtransmission: 1, nomTransmission: 'Automatique' }, { idtransmission: 2, nomTransmission: 'Manuelle' }]);
-    }, [])
-    const [categorie, setCategorie] = useState([]);
-    useEffect(() => {
-        fetch('http://192.168.43.79:1000/categorie/allCategorie')
+        fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/allTransmission')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                setCategorie(data);
+                setTransmission(data.data);
+            })
+            .catch(error => {
+                console.log("errorr")
+            });
+    }, []);
+    const [categorie, setCategorie] = useState([]);
+    useEffect(() => {
+        fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setCategorie(data.data);
             })
             .catch(error => {
                 console.log("errorr")
@@ -20,11 +28,11 @@ function Modele() {
     }, []);
     const [marques, setMarques] = useState([])
     useEffect(() => {
-        fetch('http://192.168.43.79:1000/marque/allMarque')
+        fetch('https://voitureoccasion-production-baee.up.railway.app/marque/allMarque')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                setMarques(data);
+                setMarques(data.data);
             })
             .catch(error => {
                 console.log("errorr")
@@ -76,9 +84,13 @@ function Modele() {
         }
         console.log(bigdata)
         try {
-            const response = await axios.post('http://192.168.43.79:1000/model/insertModel', bigdata, {
+            const response = await axios.post('https://voitureoccasion-production-baee.up.railway.app/model/insertModel', bigdata, {
             })
-            alert(response.data)
+            if (response.data.status === 200) {
+                alert('MODELE SUCCESSFUL')
+            } else {
+                alert(response.data.status + " WRONG STATUS ")
+            }
         } catch (error) {
             console.error();
         }
@@ -125,7 +137,7 @@ function Modele() {
                 <select onChange={handletrans}>
                     {
                         Transmission.map((element) => (
-                            <option key={element.idtransmission} value={element.idtransmission}>{element.nomTransmission}</option>
+                            <option key={element.idTransmission} value={element.idTransmission}>{element.nomTransmission}</option>
                         ))
                     }
                 </select>
@@ -133,8 +145,9 @@ function Modele() {
             <div>
                 <label>Carburant</label>
                 <select onChange={hanlde_carburant}>
-                    <option value="1">Gasoil</option>
-                    <option value="2">Essence</option>
+                    <option value="2">ESSENCE</option>
+                    <option value="3">DIESEL</option>
+                    <option value="5">HYBRIDE</option>
                 </select>
             </div>
             <div>

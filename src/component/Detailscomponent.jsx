@@ -1,64 +1,128 @@
 import Photo from "./Photo"
 import '../assets/scss/details.css'
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import axios from "axios"
 function Detailscomponent({ id }) {
+    const navigate = useNavigate();
     console.log(id)
+    const [detail_annonce, setdetails_annonce] = useState({});
+    useEffect(() => {
+        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/getDetailAnnonce?iduser=0&idannonce=${id}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.status === 200) {
+                    setdetails_annonce(data.data);
+                    console.log(data.data)
+                } else {
+                    alert(data.message + "  status : " + data.status)
+                }
+            })
+            .catch(error => {
+                console.log("errorr : " + error)
+            });
+    }, [id])
+    function validation() {
+        axios
+            .post(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/validerAnnonce?idadmin=1&idannonce=${id}`)
+            .then((response) => {
+                if (response.data.status === 200) {
+                    navigate("/firstpage");
+                } else {
+                    alert('Error: ' + response.data.status)
+                }
+            })
+    }
+    function refuser() {
+        axios
+            .get(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/refuserAnnonce?idadmin=1&idannonce=${id}`)
+            .then((response) => {
+                if (response.data.status === 200) {
+                    navigate("/firstpage");
+                } else {
+                    alert('Error: ' + response.data.status)
+                }
+            })
+    }
+    function Categorie(Tab_categorie) {
+        var categorie = ""
+        for (let index = 0; index < Tab_categorie.length; index++) {
+            if (index === Tab_categorie.length - 1) {
+                categorie += " " + Tab_categorie[index].nomcategorie
+            } else {
+                categorie += " " + Tab_categorie[index].nomcategorie + " ,"
+            }
+        }
+        return categorie
+    }
     return (
         <div className="details">
             <div className="about-car">
                 <div>
-                    <span className="label">Nom voiture : </span><span className="of">Tiguan wolsvagen</span>
+                    <span className="label">Nom voiture : </span><span className="of">{detail_annonce.nomvoiture}</span>
                 </div>
                 <div>
-                    <span className="label">Date d'annonce : </span><span className="simple-label">2023-05-04</span>
+                    <span className="label">Date d'annonce : </span><span className="simple-label">{detail_annonce.dateannonce}</span>
                 </div>
                 <div>
-                    <span className="label">Model : </span><span className="simple-label">Gorolla</span>
+                    <span className="label">Model : </span><span className="simple-label">{detail_annonce.nommodel}</span>
                 </div>
                 <div>
-                    <span className="label">Carburant :</span><span className="simple-label">Essence</span>
+                    <span className="label">Carburant :</span><span className="simple-label">{detail_annonce.nomcarburant}</span>
                 </div>
                 <div>
-                    <span className="label">Vitesse : </span><span className="simple-label">205km/h</span>
+                    <span className="label">Vitesse : </span><span className="simple-label"> {detail_annonce.vitesse} km/h</span>
                 </div>
                 <div>
-                    <span className="label">Kilomatrage :</span> <span className="simple-label"> 4500 km</span>
+                    <span className="label">Kilomatrage :</span> <span className="simple-label"> {detail_annonce.kilometrage} km</span>
                 </div>
                 <div>
-                    <span className="label">Categorie : </span> <span className="simple-label">Famille , Sportif</span>
+                    <span className="label">Categorie : </span> <span className="simple-label">
+                        {
+                            detail_annonce.categories &&
+                            <>
+                                {Categorie(detail_annonce.categories)}
+                            </>
+                        }
+                    </span>
                 </div>
                 <div>
-                    <span className="label">Transmission : </span><span className="simple-label">Automatique</span>
+                    <span className="label">Transmission : </span><span className="simple-label">{detail_annonce.nomtransmission}</span>
                 </div>
                 <div>
-                    <span className="price">Prix : 205000 ar</span>
+                    <span className="label">Nombre place : {detail_annonce.nombreplace}</span>
                 </div>
                 <div>
-                    <span className="label">Annee : 2021</span>
+                    <span className="price">Prix : {detail_annonce.prixvente} ar</span>
                 </div>
                 <div>
-                    <span className="Desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel minus corporis my name Is Ains </span>
+                    <span className="label">Annee : {detail_annonce.anneefab}</span>
+                </div>
+                <div>
+                    <span className="Desc">{detail_annonce.descriptions} </span>
                 </div>
             </div>
             <div className="photo-car">
-                <Photo />
+                {
+                    detail_annonce.photos && (
+                        <>
+                            <Photo photo={detail_annonce.photos} />
+                        </>
+                    )
+                }
                 <div className="details-annonceur">
                     <div className="description">
                         <label htmlFor="">A propos du vendeur</label>
                         <div>
-                            <span>Email : JohnDoe@gmail.com</span>
-                            <span> Localisation : Antananarivo </span>
-                            <span>Telephone : +213 454 450</span>
+                            <span>Nom  : {detail_annonce.nomuser} {detail_annonce.prenomuser}</span>
+                            <span> Localisation : {detail_annonce.nomlieu} </span>
                         </div>
                     </div>
                 </div>
                 <div className="accpter-no">
-                    <Link className="refuser">
-                        <span>Refuser</span>
-                    </Link>
-                    <Link className="accepter">
-                        <span>Accepter</span>
-                    </Link>
+                    <span onClick={refuser} className="refuser">Refuser</span>
+                    <span className="accepter" onClick={validation}>Accepter</span>
                 </div>
             </div>
         </div>

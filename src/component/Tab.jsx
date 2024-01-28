@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom'
 import '../assets/scss/style.css'
-import image_test from '../assets/image/occasion.jpg'
-function Tab(data) {
+function Tab({ data }) {
     return (
         <div className="bloc-annonce">
             <div className="content-img">
-                <img src={image_test} alt="..." />
+                <img src={data.photos[0]} alt="..." />
             </div>
             <div className="some-details">
-                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium</span>
-                <span>Kilometrage : 45000 km , vitesse : 50454 km</span>
-                <span>Transmission automatique</span>
-                <span className='price'>Prix : 15000 ar</span>
+                <span>{data.descriptions}</span>
+                <span>Kilometrage : {data.kilometrage} km , vitesse : {data.vitesse} km</span>
+                <span>Transmission : {data.nomtransmission}</span>
+                <span className='price'>Prix : {data.prixvente} ar</span>
                 <div className='details'>
-                    <span className='annonce'>Annonce le : 2023-05-05</span>
+                    <span className='annonce'>Annonce le : {data.dateannonce}</span>
                     <div className='content-choix'>
-                        <Link to="/details/1" className='details' > <span>Plus details</span></Link>
+                        <Link to={`/details/${data.idannonce}`} className='details' > <span>Plus details</span></Link>
                     </div>
                 </div>
             </div>

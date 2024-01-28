@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: row-reverse;
 }
-.content-details .details .photo-car .accpter-no a {
+.content-details .details .photo-car .accpter-no .accepter {
   font-size: 14px;
   text-decoration: none;
   margin-left: 10px;
@@ -29,14 +29,21 @@
   text-align: center;
   color: var(--white);
   border-radius: 30px;
-}
-.content-details .details .photo-car .accpter-no a span {
+  cursor: pointer;
   text-align: center;
-}
-.content-details .details .photo-car .accpter-no .accepter {
   background: var(--theme);
 }
 .content-details .details .photo-car .accpter-no .refuser {
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 10px;
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 30px;
+  text-align: center;
   background: gray;
 }
 .content-details .details .about-car {

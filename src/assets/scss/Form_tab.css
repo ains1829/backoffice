@@ -124,11 +124,26 @@
 }
 .commission div input[type=text] {
   border-bottom: 1px solid var(--theme);
+  width: 80%;
 }
 .commission div input[type=submit] {
   margin-top: 5px;
+  width: 80%;
   color: white;
   background: var(--theme);
-  border-radius: 5px;
   font-size: 14px;
+}
+.commission table {
+  margin-top: 10px;
+}
+.commission table th {
+  font-size: 15px;
+  background: rgba(107, 106, 106, 0.311);
+  padding: 8px;
+  color: white;
+}
+.commission table td {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px;
 }/*# sourceMappingURL=Form_tab.css.map */

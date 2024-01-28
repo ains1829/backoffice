@@ -4,11 +4,15 @@ import axios from 'axios';
 function Tabcategorie() {
     const [categorie, setCategorie] = useState([]);
     useEffect(() => {
-        fetch('http://192.168.43.79:1000/categorie/allCategorie')
+        fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                setCategorie(data);
+                if (data.status === 200) {
+                    setCategorie(data.data);
+                } else {
+                    alert(data.message)
+                }
             })
             .catch(error => {
                 console.log("errorr")
@@ -32,7 +36,7 @@ function Tabcategorie() {
         const tr = document.getElementById(input_hidden.value)
         const td = tr.querySelectorAll('td')[0];
         axios
-            .get('http://192.168.43.79:1000/categorie/updateCategorie?idCategorie=' + idcategorie + '&nomCategorie=' + input_value.value)
+            .get('https://voitureoccasion-production-baee.up.railway.app/categorie/updateCategorie?idCategorie=' + idcategorie + '&nomCategorie=' + input_value.value)
             .then((response) => {
                 console.log(response.data)
                 td.innerHTML = input_value.value
@@ -43,10 +47,14 @@ function Tabcategorie() {
         const tr = document.getElementById(id)
         setId(id)
         axios
-            .get('http://192.168.43.79:1000/categorie/deleteCategorie?idCategorie=' + id)
+            .get('https://voitureoccasion-production-baee.up.railway.app/categorie/deleteCategorie?idCategorie=' + id)
             .then((response) => {
-                console.log(response.data)
-                tr.innerHTML = ''
+                //  console.log(response.data)
+                if (response.data.status === 200) {
+                    tr.innerHTML = ''
+                } else {
+                    alert(response.data.message)
+                }
             })
     }
     const handleInsert = async (e) => {
@@ -55,19 +63,34 @@ function Tabcategorie() {
         const posttada = {
             nomCategorie: input.value
         }
-        const response = await fetch('http://192.168.43.79:1000/categorie/insertCategorie', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(posttada),
-        });
-        if (response.ok) {
-            setCategorie((prevState) => [
-                ...prevState, { idcategorie: categorie.length, nomCategorie: input.value }
-            ])
+        try {
+            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/insertCategorie', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(posttada),
+            });
+            if (response.ok) {
+                await fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 200) {
+                            setCategorie(data.data);
+                        } else {
+                            alert(data.message)
+                        }
+                    })
+                    .catch(error => {
+                        console.log("error : " + error)
+                    });
+
+            }
+        } catch (error) {
+            console.error("Une erreur s'est produite :", error);
         }
     };
+
     return (
         <div className="content-form-tab">
             <div className='form'>

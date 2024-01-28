@@ -1,25 +1,20 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
-import image_test from '../assets/image/occasion.jpg'
-import image_other from '../assets/image/6034768.jpg'
-const Photo = () => {
+function Photo({ photo }) {
   return (
     <Carousel fade>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image_test}
-          alt=""
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image_other}
-          alt=""
-        />
-      </Carousel.Item>
+      {
+        photo.map((element, item) => (
+          <Carousel.Item key={item}>
+            <img
+              className="d-block w-100"
+              src={element}
+              alt=""
+            />
+          </Carousel.Item>
+        ))
+      }
     </Carousel>
   );
 };

@@ -7,11 +7,11 @@ function Tabmarque() {
     const [visible, setvisible] = useState(false)
     const [idmarque, setId] = useState(0)
     useEffect(() => {
-        fetch('http://192.168.43.79:1000/marque/allMarque')
+        fetch('https://voitureoccasion-production-baee.up.railway.app/marque/allMarque')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                setMarque(data);
+                setMarque(data.data);
             })
             .catch(error => {
                 console.log("errorr")
@@ -33,7 +33,7 @@ function Tabmarque() {
         const tr = document.getElementById(input_hidden.value)
         const td = tr.querySelectorAll('td')[0];
         axios
-            .get('http://192.168.43.79:1000/marque/updateMarque?idMarque=' + idmarque + '&nomMarque=' + input_value.value)
+            .get('https://voitureoccasion-production-baee.up.railway.app/marque/updateMarque?idMarque=' + idmarque + '&nomMarque=' + input_value.value)
             .then((response) => {
                 console.log(response.data)
                 td.innerHTML = input_value.value
@@ -45,10 +45,14 @@ function Tabmarque() {
         setId(id)
         try {
             axios
-                .get('http://192.168.43.79:1000/marque/deleteMarque?idMarque=' + id)
+                .get('https://voitureoccasion-production-baee.up.railway.app/marque/deleteMarque?idMarque=' + id)
                 .then((response) => {
                     console.log(response.data)
-                    tr.innerHTML = ''
+                    if (response.data.status === 200) {
+                        tr.innerHTML = ''
+                    } else {
+                        alert(response.data.message)
+                    }
                 })
         } catch (error) {
             console.log(error)
@@ -60,17 +64,31 @@ function Tabmarque() {
         const posttada = {
             nomMarque: input.value
         }
-        const response = await fetch('http://192.168.43.79:1000/marque/insertMarque', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(posttada),
-        });
-        if (response.ok) {
-            setMarque((prevState) => [
-                ...prevState, { idMarque: marque.length, nomMarque: input.value }
-            ])
+        try {
+            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/marque/insertMarque', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(posttada),
+            });
+            if (response.ok) {
+                await fetch('https://voitureoccasion-production-baee.up.railway.app/marque/allMarque')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 200) {
+                            console.log(data)
+                            setMarque(data.data);
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.log("errorr : " + error)
+                    });
+            }
+        } catch (error) {
+            console.log("erreur : " + error)
         }
     };
     return (

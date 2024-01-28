@@ -123,13 +123,29 @@
         }
         input[type="text"]{
             border-bottom: 1px solid var(--theme);
+            width: 80%;
         }   
         input[type="submit"]{
             margin-top: 5px;
+            width: 80%;
             color: white;
             background: var(--theme);
-            border-radius: 5px;
+            // border-radius: 30px;
             font-size: 14px;
+        }
+    }
+    table{
+        margin-top: 10px;
+        th{
+            font-size: 15px;
+            background: rgba(107, 106, 106, 0.311);
+            padding: 8px;
+            color: white;
+        }
+        td{
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px;
         }
     }
 }
