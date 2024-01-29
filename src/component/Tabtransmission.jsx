@@ -2,19 +2,19 @@ import '../assets/fontawesome-5/css/all.min.css'
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { Spinner } from "spin.js"
-function Tabcategorie() {
-    const [categorie, setCategorie] = useState([]);
+function Tabtransmission() {
+    const [Transmission, setTransmission] = useState([]);
     const [loading, setLoading] = useState(true);
     const spinnerContainerRef = useRef(null);
     useEffect(() => {
         const spinner = new Spinner().spin(spinnerContainerRef.current);
         setLoading(true);
-        fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+        fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/allTransmission')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
                 if (data.status === 200) {
-                    setCategorie(data.data);
+                    setTransmission(data.data);
                     setLoading(false)
                     spinner.stop();
                 } else {
@@ -26,7 +26,7 @@ function Tabcategorie() {
             });
     }, []);
     const [visible, setvisible] = useState(false)
-    const [idcategorie, setId] = useState(0)
+    const [idTransmission, setId] = useState(0)
     function modify(id) {
         setvisible(true)
         setId(id)
@@ -43,7 +43,7 @@ function Tabcategorie() {
         const tr = document.getElementById(input_hidden.value)
         const td = tr.querySelectorAll('td')[0];
         axios
-            .get('https://voitureoccasion-production-baee.up.railway.app/categorie/updateCategorie?idCategorie=' + idcategorie + '&nomCategorie=' + input_value.value)
+            .post('https://voitureoccasion-production-baee.up.railway.app/transmission/updateTransmission?idTransmission=' + idTransmission + '&nomTransmission=' + input_value.value)
             .then((response) => {
                 console.log(response.data)
                 td.innerHTML = input_value.value
@@ -54,7 +54,7 @@ function Tabcategorie() {
         const tr = document.getElementById(id)
         setId(id)
         axios
-            .get('https://voitureoccasion-production-baee.up.railway.app/categorie/deleteCategorie?idCategorie=' + id)
+            .get('https://voitureoccasion-production-baee.up.railway.app/transmission/deleteTransmission?idTransmission=' + id)
             .then((response) => {
                 if (response.data.status === 200) {
                     tr.innerHTML = ''
@@ -65,12 +65,13 @@ function Tabcategorie() {
     }
     const handleInsert = async (e) => {
         e.preventDefault();
-        const input = document.querySelector('.categorie')
+        const input = document.querySelector('.transmission')
         const posttada = {
-            nomCategorie: input.value
+            idTransmission: 0,
+            nomTransmission: input.value
         }
         try {
-            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/insertCategorie', {
+            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/insertTransmission', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,15 +79,11 @@ function Tabcategorie() {
                 body: JSON.stringify(posttada),
             });
             if (response.ok) {
-                const spinner = new Spinner().spin(spinnerContainerRef.current);
-                setLoading(true);
-                await fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+                await fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/allTransmission')
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 200) {
-                            setCategorie(data.data);
-                            setLoading(false)
-                            spinner.stop()
+                            setTransmission(data.data);
                         } else {
                             alert(data.message)
                         }
@@ -95,6 +92,8 @@ function Tabcategorie() {
                         console.log("error : " + error)
                     });
 
+            } else {
+                alert('errorrr')
             }
         } catch (error) {
             console.error("Une erreur s'est produite :", error);
@@ -110,8 +109,8 @@ function Tabcategorie() {
                             <div className='form'>
                                 <form>
                                     <div className="cate">
-                                        <label htmlFor="">Categorie : </label>
-                                        <input className='categorie' type="text" name="" id="" />
+                                        <label htmlFor="">Transmission : </label>
+                                        <input className='transmission' type="text" name="" id="" />
                                     </div>
                                     <div className="submit">
                                         <input onClick={handleInsert} type="submit" value="Valider" />
@@ -122,18 +121,18 @@ function Tabcategorie() {
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Categorie</th>
+                                            <th>Transmission</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     {
-                                        categorie.map((element) => (
-                                            <tbody key={element.idCategorie} id={element.idCategorie}>
-                                                <tr key={element.nomCategorie} className="tr">
-                                                    <td>{element.nomCategorie}</td>
-                                                    <td> <i onClick={() => modify(element.idCategorie)} className="fas fa-pen"></i></td>
-                                                    <td><i onClick={() => deleting(element.idCategorie)} className="fas fa-trash-alt "></i></td>
+                                        Transmission.map((element) => (
+                                            <tbody key={element.idTransmission} id={element.idTransmission}>
+                                                <tr key={element.nomTransmission} className="tr">
+                                                    <td>{element.nomTransmission}</td>
+                                                    <td> <i onClick={() => modify(element.idTransmission)} className="fas fa-pen"></i></td>
+                                                    <td><i onClick={() => deleting(element.idTransmission)} className="fas fa-trash-alt "></i></td>
                                                 </tr>
                                             </tbody>
                                         ))
@@ -152,4 +151,4 @@ function Tabcategorie() {
         </div>
     )
 }
-export default Tabcategorie
+export default Tabtransmission

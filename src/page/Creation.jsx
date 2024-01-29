@@ -6,6 +6,7 @@ import '../assets/scss/modele.css'
 import { useState } from "react";
 import Tabmarque from "../component/Tabmarque";
 import Modele from "../component/Modele";
+import Tabtransmission from "../component/Tabtransmission";
 function Creation() {
     const [component, setComponenet] = useState("0")
     const handleselect = (event) => {
@@ -23,6 +24,7 @@ function Creation() {
                         <option value="0">Creation Categorie</option>
                         <option value="1"> Creation Marque </option>
                         <option value="2"> Creation Modele </option>
+                        <option value="3"> Creation Transmission </option>
                     </select>
                 </div>
                 {
@@ -38,6 +40,9 @@ function Creation() {
                         <div className="modele">
                             <Modele />
                         </div> : null
+                }{
+                    component === "3" ?
+                        <Tabtransmission /> : null
                 }
             </div>
         </div>

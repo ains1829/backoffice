@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "../component/Header";
 import Menu from "../component/Menu";
 import Tab from "../component/Tab";
+import { Spinner } from "spin.js";
 function Validation() {
     const [validationAnnonce, setAnnonce] = useState([])
+    const [loading, setLoading] = useState(true);
+    const spinnerContainerRef = useRef(null)
     useEffect(() => {
+        const spinner = new Spinner().spin(spinnerContainerRef.current);
+        setLoading(true);
         fetch('https://voitureoccasion-production-baee.up.railway.app/api/adminmir/getAnnoncesNonValider?nbaffiche=100&numlinebeforefirst=0')
             .then(response => response.json())
             .then(data => {
@@ -12,6 +17,8 @@ function Validation() {
                 if (data.status === 200) {
                     setAnnonce(data.data);
                     console.log(data.data)
+                    setLoading(false)
+                    spinner.stop();
                 } else {
                     alert(data.message + "  status : " + data.status)
                 }
@@ -21,16 +28,24 @@ function Validation() {
             });
     }, [])
     return (
+
         <div>
-            <Header />
-            <div className="menu">
-                <Menu />
-            </div>
-            <div className="content-validation">
+            <div ref={spinnerContainerRef}>
                 {
-                    validationAnnonce && validationAnnonce.map((elemennt, item) => (
-                        <Tab key={item} data={elemennt} />
-                    ))
+                    loading ? ('') : (
+                        <div>
+                            <Header />
+                            <div className="menu">
+                                <Menu />
+                            </div>
+                            <div className="content-validation">
+                                {
+                                    validationAnnonce && validationAnnonce.map((elemennt, item) => (
+                                        <Tab key={item} data={elemennt} />
+                                    ))
+                                }
+                            </div>
+                        </div>)
                 }
             </div>
         </div>
