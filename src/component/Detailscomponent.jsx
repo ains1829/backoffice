@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { Spinner } from "spin.js"
+import { Https } from "../http/Http"
 function Detailscomponent({ id }) {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ function Detailscomponent({ id }) {
     useEffect(() => {
         const spinner = new Spinner().spin(spinnerContainerRef.current);
         setLoading(true);
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/getDetailAnnonce?iduser=0&idannonce=${id}`)
+        fetch(`${Https().liens}/api/adminmir/getDetailAnnonce?iduser=0&idannonce=${id}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -32,7 +33,7 @@ function Detailscomponent({ id }) {
     }, [id])
     function validation() {
         axios
-            .post(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/validerAnnonce?idadmin=1&idannonce=${id}`)
+            .post(`${Https().liens}/api/adminmir/validerAnnonce?idadmin=1&idannonce=${id}`)
             .then((response) => {
                 if (response.data.status === 200) {
                     navigate("/firstpage");
@@ -43,7 +44,7 @@ function Detailscomponent({ id }) {
     }
     function refuser() {
         axios
-            .get(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/refuserAnnonce?idadmin=1&idannonce=${id}`)
+            .get(`${Https().liens}/api/adminmir/refuserAnnonce?idadmin=1&idannonce=${id}`)
             .then((response) => {
                 if (response.data.status === 200) {
                     navigate("/firstpage");

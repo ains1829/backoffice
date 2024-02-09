@@ -1,10 +1,11 @@
 import '../assets/scss/modele.css'
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import { Https } from '../http/Http';
 function Modele() {
     const [Transmission, setTransmission] = useState([])
     useEffect(() => {
-        fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/allTransmission')
+        fetch(`${Https().liens}/transmission/allTransmission`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -16,7 +17,7 @@ function Modele() {
     }, []);
     const [categorie, setCategorie] = useState([]);
     useEffect(() => {
-        fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+        fetch(`${Https().liens}/categorie/allCategorie`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -28,7 +29,7 @@ function Modele() {
     }, []);
     const [marques, setMarques] = useState([])
     useEffect(() => {
-        fetch('https://voitureoccasion-production-baee.up.railway.app/marque/allMarque')
+        fetch(`${Https().liens}/marque/allMarque`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -84,7 +85,7 @@ function Modele() {
         }
         console.log(bigdata)
         try {
-            const response = await axios.post('https://voitureoccasion-production-baee.up.railway.app/model/insertModel', bigdata, {
+            const response = await axios.post(`${Https().liens}/model/insertModel`, bigdata, {
             })
             if (response.data.status === 200) {
                 alert('MODELE SUCCESSFUL')

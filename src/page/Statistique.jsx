@@ -5,6 +5,7 @@ import '../assets/scss/Dashboard.css'
 import OtherDashboard from "../component/OtherDashboard";
 import React, { useState, useEffect } from "react";
 import '../assets/fontawesome-5/css/all.min.css'
+import { Https } from "../http/Http";
 function Statistique() {
     var dates_encours = new Date();
     const annee = dates_encours.getFullYear()
@@ -30,7 +31,7 @@ function Statistique() {
             setdatefalse(true)
             const encours = document.querySelector('.encours')
             encours.innerHTML = `Recheche pour ${yearString}`
-            fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticmoney?annee=${yearString}`)
+            fetch(`${Https().liens}/api/statistic/getstatisticmoney?annee=${yearString}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -43,7 +44,7 @@ function Statistique() {
                 .catch(error => {
                     console.log("errorr : " + error)
                 });
-            fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticvoiture?annee=${yearString}`)
+            fetch(`${Https().liens}/api/statistic/getstatisticvoiture?annee=${yearString}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -56,7 +57,7 @@ function Statistique() {
                 .catch(error => {
                     console.log("errorr : " + error)
                 });
-            fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticmarque?annee=${yearString}`)
+            fetch(`${Https().liens}/api/statistic/getstatisticmarque?annee=${yearString}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -69,7 +70,7 @@ function Statistique() {
                 .catch(error => {
                     console.log("errorr : " + error)
                 });
-            fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticlieu?annee=${yearString}`)
+            fetch(`${Https().liens}/api/statistic/getstatisticlieu?annee=${yearString}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -89,7 +90,7 @@ function Statistique() {
     }
     const [client_site, setClient_site] = useState({})
     useEffect(() => {
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticusercount?annee=${annee}`)
+        fetch(`${Https().liens}/api/statistic/getstatisticusercount?annee=${annee}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -105,7 +106,7 @@ function Statistique() {
     }, [annee])
     const [money_site, setMoney_site] = useState({})
     useEffect(() => {
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticmoney?annee=${annee}`)
+        fetch(`${Https().liens}/api/statistic/getstatisticmoney?annee=${annee}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -121,7 +122,7 @@ function Statistique() {
     }, [annee])
     const [voiture_site, setVoiture_Site] = useState({})
     useEffect(() => {
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticvoiture?annee=${annee}`)
+        fetch(`${Https().liens}/api/statistic/getstatisticvoiture?annee=${annee}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -137,7 +138,7 @@ function Statistique() {
     }, [annee])
     const [data_marque, setdata_marque] = useState({})
     useEffect(() => {
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticmarque?annee=${annee}`)
+        fetch(`${Https().liens}/api/statistic/getstatisticmarque?annee=${annee}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -153,7 +154,7 @@ function Statistique() {
     }, [annee])
     const [data_province, setdata_province] = useState({})
     useEffect(() => {
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/statistic/getstatisticlieu?annee=${annee}`)
+        fetch(`${Https().liens}/api/statistic/getstatisticlieu?annee=${annee}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)

@@ -2,6 +2,7 @@ import '../assets/fontawesome-5/css/all.min.css'
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { Spinner } from "spin.js"
+import { Https } from '../http/Http';
 function Tabtransmission() {
     const [Transmission, setTransmission] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -9,7 +10,7 @@ function Tabtransmission() {
     useEffect(() => {
         const spinner = new Spinner().spin(spinnerContainerRef.current);
         setLoading(true);
-        fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/allTransmission')
+        fetch(`${Https().liens}/transmission/allTransmission`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -43,7 +44,7 @@ function Tabtransmission() {
         const tr = document.getElementById(input_hidden.value)
         const td = tr.querySelectorAll('td')[0];
         axios
-            .post('https://voitureoccasion-production-baee.up.railway.app/transmission/updateTransmission?idTransmission=' + idTransmission + '&nomTransmission=' + input_value.value)
+            .post(`${Https().liens}/transmission/updateTransmission?idTransmission=${idTransmission}&nomTransmission=${input_value.value}`)
             .then((response) => {
                 console.log(response.data)
                 td.innerHTML = input_value.value
@@ -54,7 +55,7 @@ function Tabtransmission() {
         const tr = document.getElementById(id)
         setId(id)
         axios
-            .get('https://voitureoccasion-production-baee.up.railway.app/transmission/deleteTransmission?idTransmission=' + id)
+            .get(`${Https().liens}/transmission/deleteTransmission?idTransmission=` + id)
             .then((response) => {
                 if (response.data.status === 200) {
                     tr.innerHTML = ''
@@ -71,7 +72,7 @@ function Tabtransmission() {
             nomTransmission: input.value
         }
         try {
-            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/insertTransmission', {
+            const response = await fetch(`${Https().liens}/transmission/insertTransmission`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,7 +80,7 @@ function Tabtransmission() {
                 body: JSON.stringify(posttada),
             });
             if (response.ok) {
-                await fetch('https://voitureoccasion-production-baee.up.railway.app/transmission/allTransmission')
+                await fetch(`${Https().liens}/transmission/allTransmission`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 200) {

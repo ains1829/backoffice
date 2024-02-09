@@ -3,6 +3,7 @@ import '../assets/fontawesome-5/css/all.min.css'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Spinner } from "spin.js"
+import { Https } from '../http/Http';
 function Tabmarque() {
     const [marque, setMarque] = useState([]);
     const [visible, setvisible] = useState(false);
@@ -12,7 +13,7 @@ function Tabmarque() {
     useEffect(() => {
         const spinner = new Spinner().spin(spinnerContainerRef.current);
         setLoading(true);
-        fetch('https://voitureoccasion-production-baee.up.railway.app/marque/allMarque')
+        fetch(`${Https().liens}/marque/allMarque`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -40,7 +41,7 @@ function Tabmarque() {
         const tr = document.getElementById(input_hidden.value)
         const td = tr.querySelectorAll('td')[0];
         axios
-            .get('https://voitureoccasion-production-baee.up.railway.app/marque/updateMarque?idMarque=' + idmarque + '&nomMarque=' + input_value.value)
+            .get(`${Https().liens}/marque/updateMarque?idMarque=${idmarque}&nomMarque=${input_value.value}`)
             .then((response) => {
                 console.log(response.data)
                 td.innerHTML = input_value.value
@@ -52,7 +53,7 @@ function Tabmarque() {
         setId(id)
         try {
             axios
-                .get('https://voitureoccasion-production-baee.up.railway.app/marque/deleteMarque?idMarque=' + id)
+                .get(`${Https().liens}/marque/deleteMarque?idMarque=` + id)
                 .then((response) => {
                     console.log(response.data)
                     if (response.data.status === 200) {
@@ -72,7 +73,7 @@ function Tabmarque() {
             nomMarque: input.value
         }
         try {
-            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/marque/insertMarque', {
+            const response = await fetch(`${Https().liens}/marque/insertMarque`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +81,7 @@ function Tabmarque() {
                 body: JSON.stringify(posttada),
             });
             if (response.ok) {
-                await fetch('https://voitureoccasion-production-baee.up.railway.app/marque/allMarque')
+                await fetch(`${Https().liens}/marque/allMarque`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 200) {

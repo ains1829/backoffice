@@ -3,6 +3,7 @@ import logo from '../assets/image/1-removebg-preview.png'
 import '../assets/scss/login.css'
 import axios from 'axios';
 import { useState } from 'react';
+import { Https } from '../http/Http';
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('mirado@gmail.com');
@@ -16,7 +17,7 @@ function Login() {
     const handle = async (event) => {
         event.preventDefault()
         axios
-            .post(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/logAdmin?mail=${email}&pwd=${password}`)
+            .post(`${Https().liens}/api/adminmir/logAdmin?mail=${email}&pwd=${password}`)
             .then((response) => {
                 if (response.data.status === 200) {
                     navigate('/stat')

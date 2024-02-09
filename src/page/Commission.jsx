@@ -3,13 +3,14 @@ import Menu from "../component/Menu";
 import '../assets/scss/style.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Https } from "../http/Http";
 function Commission() {
     const change_commission = (e) => {
         e.preventDefault();
         const input_text = document.querySelector('input[type="text"]');
         const percent = document.querySelector('.percent');
         axios
-            .get(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/changetauxcommision?tauxpourcent=${input_text.value}`)
+            .get(`${Https().liens}/api/adminmir/changetauxcommision?tauxpourcent=${input_text.value}`)
             .then((response) => {
                 if (response.data.status === 200) {
                     percent.innerHTML = input_text.value + " %"
@@ -20,7 +21,7 @@ function Commission() {
     }
     const [commision, setCommision] = useState({});
     useEffect(() => {
-        fetch(`https://voitureoccasion-production-baee.up.railway.app/api/adminmir/getRegletauxCommission`)
+        fetch(`${Https().liens}/api/adminmir/getRegletauxCommission`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)

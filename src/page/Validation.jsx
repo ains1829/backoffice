@@ -3,6 +3,7 @@ import Header from "../component/Header";
 import Menu from "../component/Menu";
 import Tab from "../component/Tab";
 import { Spinner } from "spin.js";
+import { Https } from "../http/Http";
 function Validation() {
     const [validationAnnonce, setAnnonce] = useState([])
     const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ function Validation() {
     useEffect(() => {
         const spinner = new Spinner().spin(spinnerContainerRef.current);
         setLoading(true);
-        fetch('https://voitureoccasion-production-baee.up.railway.app/api/adminmir/getAnnoncesNonValider?nbaffiche=100&numlinebeforefirst=0')
+        fetch(`${Https().liens}/api/adminmir/getAnnoncesNonValider?nbaffiche=100&numlinebeforefirst=0`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)

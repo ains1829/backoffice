@@ -2,6 +2,7 @@ import '../assets/fontawesome-5/css/all.min.css'
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { Spinner } from "spin.js"
+import { Https } from '../http/Http';
 function Tabcategorie() {
     const [categorie, setCategorie] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -9,7 +10,7 @@ function Tabcategorie() {
     useEffect(() => {
         const spinner = new Spinner().spin(spinnerContainerRef.current);
         setLoading(true);
-        fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+        fetch(`${Https().liens}/categorie/allCategorie`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -43,7 +44,7 @@ function Tabcategorie() {
         const tr = document.getElementById(input_hidden.value)
         const td = tr.querySelectorAll('td')[0];
         axios
-            .get('https://voitureoccasion-production-baee.up.railway.app/categorie/updateCategorie?idCategorie=' + idcategorie + '&nomCategorie=' + input_value.value)
+            .get(`${Https().liens}/categorie/updateCategorie?idCategorie=${idcategorie}&nomCategorie=${input_value.value}`)
             .then((response) => {
                 console.log(response.data)
                 td.innerHTML = input_value.value
@@ -54,7 +55,7 @@ function Tabcategorie() {
         const tr = document.getElementById(id)
         setId(id)
         axios
-            .get('https://voitureoccasion-production-baee.up.railway.app/categorie/deleteCategorie?idCategorie=' + id)
+            .get(`${Https().liens}/categorie/deleteCategorie?idCategorie=` + id)
             .then((response) => {
                 if (response.data.status === 200) {
                     tr.innerHTML = ''
@@ -70,7 +71,7 @@ function Tabcategorie() {
             nomCategorie: input.value
         }
         try {
-            const response = await fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/insertCategorie', {
+            const response = await fetch(`${Https().liens}/categorie/insertCategorie`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +81,7 @@ function Tabcategorie() {
             if (response.ok) {
                 const spinner = new Spinner().spin(spinnerContainerRef.current);
                 setLoading(true);
-                await fetch('https://voitureoccasion-production-baee.up.railway.app/categorie/allCategorie')
+                await fetch(`${Https().liens}/categorie/allCategorie`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 200) {
